@@ -1,3 +1,138 @@
 {
-  "extends": "next/core-web-vitals"
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "eslint-plugin-import-helpers"
+    ],
+    "rules": {
+        // yoda style
+        "yoda": [
+            "error",
+            "always"
+        ],
+        // blank line at the end of the file
+        "eol-last": [
+            "error",
+            "always"
+        ],
+        // 4 spaces identation
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        // \n eol
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        // single quotes
+        "quotes": [
+            "error",
+            "single"
+        ],
+        // semicolons at the end of every statement
+        "semi": [
+            "error",
+            "always"
+        ],
+        // always add parenthesis in arrow functions
+        "arrow-parens": [
+            "error",
+            "always"
+        ],
+        // add spaces inside braces
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "no-class-assign": "off",
+        "space-infix-ops": [
+            "error",
+            {
+                "int32Hint": false
+            }
+        ],
+        "react/display-name": [
+            0,
+            {
+                "ignoreTranspilerName": true
+            }
+        ],
+        "react/jsx-closing-bracket-location": 0,
+        "no-mixed-spaces-and-tabs": [
+            "error",
+            "smart-tabs"
+        ],
+        "import/prefer-default-export": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
+        "react/prop-types": 0,
+        "react/jsx-tag-spacing": 1,
+        "react/react-in-jsx-scope": 0,
+        "no-prototype-builtins": 0,
+        "react/no-unescaped-entities": 0,
+        "react/jsx-key": 0,
+        "react-hooks/exhaustive-deps": 0,
+        "import-helpers/order-imports": [
+            "warn",
+            {
+                "newlinesBetween": "always",
+                "groups": [
+                    "/^react/",
+                    "/^antd/",
+                    "module",
+                    "/^@shared/",
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
+            }
+        ]
+    },
+    "globals": {
+        "require": "writable",
+        "process": "writable",
+        "Cypress": "readonly",
+        "cy": "readonly",
+        "describe": "readonly",
+        "it": "readonly",
+        "expect": "readonly",
+        "before": "readonly",
+        "beforeEach": "readonly",
+        "afterEach": "readonly",
+        "after": "readonly"
+    }
 }

@@ -1,0 +1,150 @@
+.image-container {
+    position: relative;
+    max-width: 100vw;
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    margin-top: 3rem;
+
+    .image {
+        object-fit: contain;
+        opacity: 0;
+    }
+
+    &--1 {
+        height: 45vh;
+
+        .image {
+            transform: translateX(-50%) translateY(-10%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(-10%) translateY(-10%) scale(1);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+
+    &--2 {
+        height: 45vh;
+
+        .image {
+            transform: translateX(-50%) translateY(-10%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(-15%) translateY(-10%) scale(1);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+
+    &--3 {
+        height: 35vh;
+
+        .image {
+            transform: translateX(-50%) translateY(5%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(-5%) translateY(5%) scale(1);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+
+    &--4 {
+        height: 50vh;
+
+        .image {
+            transform: translateX(50%) translateY(-5%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(20%) translateY(-5%) scale(1);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+
+    &--5 {
+        height: 40vh;
+
+        .image {
+            transform: translateX(-50%) translateY(-5%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(-12%) translateY(-5%) scale(1);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+
+    &--6 {
+        height: 40vh;
+
+        .image {
+            transform: translateX(50%) translateY(-5%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(10%) translateY(-5%) scale(1);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+
+    &--7 {
+        height: 65vh;
+
+        .image {
+            transform: translateX(50%) translateY(-35%) scale(0.7);
+
+            &.loaded {
+                opacity: 1;
+                transform: translateX(25%) translateY(-25%) scale(1.5);
+                transition:
+                    opacity 0.2s,
+                    transform 0.5s;
+            }
+        }
+    }
+}
+
+.logo-container {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+}
+
+.button-container {
+    display: flex;
+    flex-flow: column;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 220px;
+
+    .button {
+        margin: 0 1rem;
+    }
+}
+
+.container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}

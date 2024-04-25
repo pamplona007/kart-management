@@ -1,0 +1,47 @@
+$height: 50px;
+$border-width: calc($height * 0.57735);
+$chevron-border-width: calc(($border-width / 2));
+$transparent-border-width: calc($height / 2);
+
+.button {
+    --background-color: rgba(255, 255, 255, .7);
+    height: $height;
+    position: relative;
+    border: none;
+    padding: 5px 10px;
+    background-color: var(--background-color);
+    color: #2c2c2c;
+    font-family: 'New Rodin', sans-serif;
+    font-weight: 600;
+    transition: background-color .2s, margin .2s, transform .2s;
+
+    > .before, > .after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        top: 0;
+        bottom: 0;
+        transition: border-color .2s;
+    }
+
+    > .before {
+        left: calc(-#{$chevron-border-width} + .2px);
+        border-top: $transparent-border-width solid transparent;
+        border-bottom: $transparent-border-width solid transparent;
+        border-right: $chevron-border-width solid var(--background-color);
+    }
+
+    > .after {
+        right: calc(-#{$chevron-border-width} + .2px);
+        border-top: $transparent-border-width solid transparent;
+        border-bottom: $transparent-border-width solid transparent;
+        border-left: $chevron-border-width solid var(--background-color);
+    }
+
+    &:hover {
+        --background-color: rgba(255, 255, 255, .9);
+        margin: 0 -5px;
+        transform: scaleX(1.05);
+    }
+}

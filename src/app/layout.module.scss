@@ -1,0 +1,33 @@
+.main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 6rem;
+    min-height: 100vh;
+
+    background-image: url('/images/bg-4.jpg');
+    background-size: auto;
+    background-position: center;
+    background-repeat: repeat-y;
+
+    animation: moveBackground 40s ease-in-out infinite;
+  }
+
+  .overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
