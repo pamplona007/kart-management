@@ -1,5 +1,5 @@
-import dbConnect from "@/lib/dbConnect";
-import Pilot from "@/models/Pilot";
+import dbConnect from '@/lib/dbConnect';
+import Pilot from '@/models/Pilot';
 
 export async function GET() {
     await dbConnect();
