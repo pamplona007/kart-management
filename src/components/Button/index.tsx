@@ -4,13 +4,18 @@ import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+    dark?: boolean;
+};
 
 
 const Button = (props: Props) => {
     const buttonClassNames = classNames(
         styles.button,
         props.className,
+        {
+            [styles.dark]: props.dark,
+        },
     );
 
     return (
