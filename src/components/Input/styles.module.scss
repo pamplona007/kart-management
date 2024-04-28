@@ -1,0 +1,36 @@
+.widget-input {
+  background: #ffffff;
+  border: 1px solid #bdbdbd;
+  border-radius: 6px;
+  color: #011735;
+  height: 34px;
+  padding: 0 15px;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: inherit;
+
+  transition: border 0.2s;
+
+  &.-highlight {
+    border-color: #ff4d4f;
+  }
+
+  &::placeholder {
+    color: #e6e6e6;
+  }
+
+  &:where(:not(:placeholder-shown)) {
+    border-color: #011735;
+  }
+
+  &:focus {
+    border-color: #08a8ff;
+    outline: none;
+  }
+
+  &[disabled],
+  &[readonly] {
+    background: #f5f5f5;
+    border-color: #f5f5f5;
+  }
+}

@@ -3,7 +3,7 @@ import Pilot from '@/models/Pilot';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: { id: string } },
 ) {
     await dbConnect();
 
@@ -14,7 +14,7 @@ export async function GET(
 
 export async function PATCH(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: { id: string } },
 ) {
     await dbConnect();
 

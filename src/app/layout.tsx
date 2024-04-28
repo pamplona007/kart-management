@@ -5,13 +5,16 @@ import { PropsWithChildren } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import styles from './layout.module.scss';
+
+import './bootstrap.scss';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './globals.css';
 
 const queryClient = new QueryClient();
 
-export default function RootLayout({ children }: PropsWithChildren) {
+const RootLayout = ({ children }: PropsWithChildren) => {
     return (
-        <html lang="en">
+        <html lang={'en'}>
             <body>
                 <QueryClientProvider client={queryClient}>
                     <main className={styles.main}>
@@ -22,4 +25,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
             </body>
         </html>
     );
-}
+};
+
+export default RootLayout;

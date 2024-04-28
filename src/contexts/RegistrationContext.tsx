@@ -1,37 +1,18 @@
 import { createContext } from 'react';
 
+import { useFormik } from 'formik';
+
+export type FormValues = {
+    firstName: string;
+    lastName: string;
+    nickName: string;
+    birthday: number;
+    rating: number;
+    confirmed: boolean;
+}
+
 interface RegistrationContextType {
-    formValues: {
-        firstName: string;
-        lastName: string;
-        nickname: string;
-        age: number;
-        rating: number;
-    };
-    setFormValues: (formValues: {
-        firstName: string;
-        lastName: string;
-        nickname: string;
-        age: number;
-        rating: number;
-    }) => void;
-    formErrors: {
-        firstName: string;
-        lastName: string;
-        nickname: string;
-        age: string;
-        rating: string;
-    };
-    setFormErrors: (formErrors: {
-        firstName: string;
-        lastName: string;
-        nickname: string;
-        age: string;
-        rating: string;
-    }) => void;
-    formValid: boolean;
-    setFormValid: (formValid: boolean) => void;
-    submitForm: () => void;
+    formik: ReturnType<typeof useFormik<FormValues>>;
 }
 
 const RegistrationContext = createContext<RegistrationContextType | null>(null);

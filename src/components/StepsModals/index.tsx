@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode } from 'react';
+import React, { ReactNode, createContext } from 'react';
 
 import classNames from 'classnames';
 
@@ -10,6 +10,8 @@ import styles from './styles.module.scss';
 export type Step = {
     title: string;
     content: ReactNode | JSX.Element | JSX.Element[] | string;
+    showNext?: boolean;
+    showPrevious?: boolean;
 };
 
 type StepsModalsProps = {
@@ -20,6 +22,20 @@ type StepsModalsProps = {
     onFinish?: () => void;
     canAdvance?: boolean;
 };
+
+type StepsContextProps = StepsModalsProps & {
+    handleNextStep: () => void;
+    handlePrevStep: () => void;
+};
+
+export const StepsContext = createContext<StepsContextProps>({
+    steps: [],
+    activeStep: 0,
+    setActiveStep: () => {},
+    isModalVisible: false,
+    handleNextStep: () => {},
+    handlePrevStep: () => {},
+});
 
 const StepsModals = (props: StepsModalsProps) => {
     const { steps, activeStep, setActiveStep, isModalVisible, onFinish, canAdvance = true } = props;
@@ -47,44 +63,54 @@ const StepsModals = (props: StepsModalsProps) => {
     };
 
     return (
-        <div className={wrapperClassNames}>
-            {isModalVisible && (
-                steps.map((step, index) => (
-                    <div
-                        key={step.title}
-                        className={classNames(
-                            styles.step,
-                            {
-                                [styles.active]: index === activeStep,
-                            },
-                        )}
-                    >
-                        <h2 className={styles.title}>
-                            {step.title}
-                        </h2>
-                        <div className={styles.content}>
-                            {step.content}
+        <StepsContext.Provider
+            value={{
+                ...props,
+                handleNextStep,
+                handlePrevStep,
+            }}
+        >
+            <div className={wrapperClassNames}>
+                {isModalVisible && (
+                    steps.map(({ title, content, showNext = true, showPrevious = true }, index) => (
+                        <div
+                            key={index}
+                            className={classNames(
+                                styles.step,
+                                {
+                                    [styles.active]: index === activeStep,
+                                },
+                            )}
+                        >
+                            <h2 className={styles.title}>
+                                {title}
+                            </h2>
+                            <div className={styles.content}>
+                                {content}
+                            </div>
+                            <div className={styles['button-container']}>
+                                {showPrevious && (
+                                    <Button
+                                        onClick={handlePrevStep}
+                                        disabled={0 === activeStep}
+                                    >
+                                        {'Voltar'}
+                                    </Button>
+                                )}
+                                {showNext && (
+                                    <Button
+                                        onClick={handleNextStep}
+                                        disabled={!canAdvance}
+                                    >
+                                        {activeStep === steps.length - 1 ? 'Finalizar' : 'Próximo'}
+                                    </Button>
+                                )}
+                            </div>
                         </div>
-                        <div className={styles['button-container']}>
-                            <Button
-                                onClick={handlePrevStep}
-                                disabled={0 === activeStep}
-                                dark
-                            >
-                                Voltar
-                            </Button>
-                            <Button
-                                onClick={handleNextStep}
-                                disabled={!canAdvance}
-                                dark
-                            >
-                                {activeStep === steps.length - 1 ? 'Finalizar' : 'Próximo'}
-                            </Button>
-                        </div>
-                    </div>
-                ))
-            )}
-        </div>
+                    ))
+                )}
+            </div>
+        </StepsContext.Provider>
     );
 };
 

@@ -1,0 +1,37 @@
+@import '/styles/settings';
+@import '/styles/tools';
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    font-size: calculateRem(10px);
+    line-height: calculateRem(11px);
+    color: var(--ink-default-gray-7);
+    gap: 4px;
+
+    > .star {
+        background: none;
+        border: none;
+        cursor: default;
+        color: inherit;
+        padding: 0;
+    }
+
+    &:not(.read-only) {
+        > .star {
+            cursor: pointer;
+        }
+    }
+
+    &.responsive {
+        font-size: calculateRem(6px);
+        line-height: calculateRem(7px);
+        gap: 2px;
+
+        @include media('>=md') {
+            font-size: calculateRem(10px);
+            line-height: calculateRem(11px);
+            gap: 4px;
+        }
+    }
+}

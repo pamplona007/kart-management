@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 
 import Button from '@/components/Button';
 import ImportantInformationSteps from '@/components/ImportantInformationSteps';
+import RegistrationSteps from '@/components/RegistrationSteps';
 import classNames from 'classnames';
 import Image from 'next/image';
 
@@ -11,9 +12,10 @@ import styles from './page.module.scss';
 
 const racerImageQuantity = 7;
 
-export default function Home() {
+const Home = () => {
     const [loaded, setLoaded] = useState(false);
     const [isImportantInformationOpen, setIsImportantInformationOpen] = useState(false);
+    const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
 
     const randomRacerImage = useMemo(() => {
         return Math.floor(Math.random() * racerImageQuantity) + 1;
@@ -21,7 +23,7 @@ export default function Home() {
 
     const imageContainerClassNames = classNames(
         styles['image-container'],
-        styles['image-container--' + randomRacerImage],
+        styles[`image-container--${randomRacerImage}`],
     );
 
     const imageClassNames = classNames(
@@ -38,8 +40,8 @@ export default function Home() {
                     >
                         <Image
                             src={`/images/racers/racer-${randomRacerImage}.png`}
-                            alt="Racer"
-                            layout="fill"
+                            alt={'Racer'}
+                            layout={'fill'}
                             quality={100}
                             className={imageClassNames}
                             onLoad={() => setLoaded(true)}
@@ -49,13 +51,13 @@ export default function Home() {
 
                 <div className={styles['button-container']}>
                     <Button>
-                    Corridas
+                        {'Corridas'}
                     </Button>
-                    <Button>
-                    Registrar
+                    <Button onClick={() => setIsRegistrationOpen(true)}>
+                        {'Registrar'}
                     </Button>
                     <Button onClick={() => setIsImportantInformationOpen(true)}>
-                    Informações importantes
+                        {'Informações importantes'}
                     </Button>
                 </div>
             </div>
@@ -63,6 +65,12 @@ export default function Home() {
                 isOpen={isImportantInformationOpen}
                 setIsOpen={setIsImportantInformationOpen}
             />
+            <RegistrationSteps
+                isOpen={isRegistrationOpen}
+                setIsOpen={setIsRegistrationOpen}
+            />
         </>
     );
-}
+};
+
+export default Home;

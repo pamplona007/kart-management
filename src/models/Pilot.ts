@@ -14,12 +14,9 @@ const PilotSchema = new mongoose.Schema<IPilot>({
     firstName: {
         type: String,
         required: [true, 'Please provide a first name for the pilot.'],
-        maxlength: [20, 'First name cannot be more than 20 characters'],
     },
     lastName: {
         type: String,
-        required: [true, 'Please provide a last name for the pilot.'],
-        maxlength: [20, 'Last name cannot be more than 20 characters'],
     },
     nickName: {
         type: String,
@@ -38,10 +35,6 @@ const PilotSchema = new mongoose.Schema<IPilot>({
         type: Boolean,
         required: [true, 'Please provide a confirmation status for the pilot.'],
         default: false,
-    },
-    possibleDates: {
-        type: [Date],
-        required: [true, 'Please provide possible dates for the pilot.'],
     },
 }, {
     timestamps: true,

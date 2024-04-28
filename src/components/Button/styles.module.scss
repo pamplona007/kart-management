@@ -5,6 +5,8 @@ $transparent-border-width: calc($height / 2);
 
 .button {
     --background-color: rgba(255, 255, 255, .7);
+    --chevron-offset: calc(-#{$chevron-border-width} + .2px);
+
     height: $height;
     position: relative;
     border: none;
@@ -13,6 +15,7 @@ $transparent-border-width: calc($height / 2);
     color: #2c2c2c;
     font-family: 'New Rodin', sans-serif;
     font-weight: 600;
+    font-size: .8rem;
     transition: background-color .2s, margin .2s, transform .2s;
     cursor: pointer;
 
@@ -27,14 +30,14 @@ $transparent-border-width: calc($height / 2);
     }
 
     > .before {
-        left: calc(-#{$chevron-border-width} + .2px);
+        left: var(--chevron-offset);
         border-top: $transparent-border-width solid transparent;
         border-bottom: $transparent-border-width solid transparent;
         border-right: $chevron-border-width solid var(--background-color);
     }
 
     > .after {
-        right: calc(-#{$chevron-border-width} + .2px);
+        right: var(--chevron-offset);
         border-top: $transparent-border-width solid transparent;
         border-bottom: $transparent-border-width solid transparent;
         border-left: $chevron-border-width solid var(--background-color);
@@ -47,7 +50,7 @@ $transparent-border-width: calc($height / 2);
     }
 
     &[disabled] {
-        --background-color: rgba(0, 0, 0, .3);
+        --background-color: rgba(255, 255, 255, .3);
         color: #fff;
         cursor: not-allowed;
     }

@@ -13,6 +13,8 @@
     justify-content: center;
     align-items: center;
 
+    backdrop-filter: blur(2px);
+
     &.visible {
         pointer-events: auto;
         opacity: 1;
@@ -21,7 +23,8 @@
 
     > .step {
         display: none;
-        background-color: rgba($color: #fff, $alpha: .8);
+        background-color: rgba($color: #000, $alpha: .8);
+        color: #fff;
         backdrop-filter: blur(4px);
         min-height: 50svh;
         padding: 30px;
@@ -31,6 +34,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 20px;
         z-index: 1001;
         width: calc(100% - 30px);
 
@@ -41,6 +45,7 @@
 
         > .content {
             display: flex;
+            width: 100%;
             flex-direction: column;
             gap: 20px;
             align-items: center;

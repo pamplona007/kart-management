@@ -64,13 +64,25 @@ const Pilots = () => {
             {races.map(({ pilots }, index) => (
                 <table key={index}>
                     <summary>
-                        Corrida {index + 1}
+                        {'Corrida '}
+                        {index + 1}
                     </summary>
                     <tbody>
                         {pilots.map((pilot) => (
                             <tr key={pilot._id}>
-                                <td>{pilot.firstName} "{pilot.nickName}" {pilot.lastName}</td>
-                                <td>{pilot.rating}</td>
+                                <td>
+                                    {pilot.firstName}
+                                    {' '}
+                                    {'"'}
+                                    {pilot.nickName}
+                                    {'" '}
+                                    {' '}
+                                    {pilot.lastName}
+                                </td>
+                                <td>
+                                    {pilot.rating * 50}
+                                    {'cc'}
+                                </td>
                             </tr>
                         ))}
                     </tbody>

@@ -4,7 +4,9 @@ import Pilot from '@/models/Pilot';
 export async function GET() {
     await dbConnect();
 
-    const pilots = await Pilot.find({});
+    const pilots = await Pilot.find({
+        rating: { $gte: 1 },
+    });
 
     return Response.json(pilots);
 }
@@ -14,7 +16,11 @@ export async function POST(request: Request) {
 
     const body = await request.json();
 
-    const newPilot = await Pilot.create(body);
+    try {
+        const newPilot = await Pilot.create(body);
 
-    return Response.json(newPilot);
+        return Response.json(newPilot);
+    } catch (error) {
+        return Response.json(error, { status: 400 });
+    }
 }

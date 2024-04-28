@@ -8,23 +8,24 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
     dark?: boolean;
 };
 
-
 const Button = (props: Props) => {
+    const { className, dark, children, ...rest } = props;
+
     const buttonClassNames = classNames(
         styles.button,
-        props.className,
+        className,
         {
-            [styles.dark]: props.dark,
+            [styles.dark]: dark,
         },
     );
 
     return (
         <button
-            {...props}
+            {...rest}
             className={buttonClassNames}
         >
             <div className={styles.before}></div>
-            {props.children}
+            {children}
             <div className={styles.after}></div>
         </button>
     );
