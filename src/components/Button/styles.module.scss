@@ -64,4 +64,8 @@ $transparent-border-width: calc($height / 2);
             color: #fff;
         }
     }
+
+    &.block {
+        width: 100%;
+    }
 }

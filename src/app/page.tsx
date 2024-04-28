@@ -7,6 +7,7 @@ import ImportantInformationSteps from '@/components/ImportantInformationSteps';
 import RegistrationSteps from '@/components/RegistrationSteps';
 import classNames from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import styles from './page.module.scss';
 
@@ -50,9 +51,11 @@ const Home = () => {
                 </div>
 
                 <div className={styles['button-container']}>
-                    <Button>
-                        {'Corridas'}
-                    </Button>
+                    <Link href={'/corridas'} className={styles['button-link']}>
+                        <Button role={'link'} block>
+                            {'Corridas'}
+                        </Button>
+                    </Link>
                     <Button onClick={() => setIsRegistrationOpen(true)}>
                         {'Registrar'}
                     </Button>

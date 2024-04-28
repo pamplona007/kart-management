@@ -6,16 +6,18 @@ import styles from './styles.module.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
     dark?: boolean;
+    block?: boolean;
 };
 
 const Button = (props: Props) => {
-    const { className, dark, children, ...rest } = props;
+    const { className, dark, block, children, ...rest } = props;
 
     const buttonClassNames = classNames(
         styles.button,
         className,
         {
             [styles.dark]: dark,
+            [styles.block]: block,
         },
     );
 
