@@ -6,6 +6,7 @@ import RegistrationContext, { FormValues } from '@/contexts/RegistrationContext'
 import { useFormik } from 'formik';
 
 import { importantInformationSteps } from '../ImportantInformationSteps';
+import Pix from '../Pix';
 import StepsModals, { Step } from '../StepsModals';
 import AgeStep from './components/AgeStep';
 import FormStep from './components/FormStep';
@@ -68,6 +69,17 @@ const RegistrationSteps = (props: RegistrationProps) => {
                 content: <AgeStep />,
             },
             ...importantInformationSteps,
+            {
+                title: 'Para finalizar',
+                content: (
+                    <div>
+                        <p>
+                            {'Você já está registrado(a)! Mas ainda precisa confirmar a participação ao realizar o pagamento da inscrição.'}
+                        </p>
+                        <Pix />
+                    </div>
+                ),
+            },
         ];
     }, [formik.values.rating]);
 
@@ -87,6 +99,7 @@ const RegistrationSteps = (props: RegistrationProps) => {
         await formik.submitForm();
 
         setIsOpen(false);
+        formik.resetForm();
     };
 
     useEffect(() => {
@@ -104,6 +117,10 @@ const RegistrationSteps = (props: RegistrationProps) => {
                 isModalVisible={isOpen}
                 onFinish={onFinish}
                 canAdvance={canAdvance()}
+                onClose={() => {
+                    setIsOpen(false);
+                    formik.resetForm();
+                }}
             />
         </RegistrationContext.Provider>
     );

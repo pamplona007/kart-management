@@ -102,6 +102,7 @@ const ImportantInformationSteps = (props: ImportantInformationStepsProps) => {
             setActiveStep={setActiveStep}
             isModalVisible={isOpen}
             onFinish={() => setIsOpen(false)}
+            onClose={() => setIsOpen(false)}
         />
     );
 };

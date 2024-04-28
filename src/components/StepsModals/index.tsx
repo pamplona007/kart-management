@@ -5,6 +5,7 @@ import React, { ReactNode, createContext } from 'react';
 import classNames from 'classnames';
 
 import Button from '../Button';
+import Modal from '../Modal';
 import styles from './styles.module.scss';
 
 export type Step = {
@@ -19,6 +20,7 @@ type StepsModalsProps = {
     activeStep: number;
     setActiveStep: (activeStep: number) => void;
     isModalVisible: boolean;
+    onClose?: () => void;
     onFinish?: () => void;
     canAdvance?: boolean;
 };
@@ -38,7 +40,15 @@ export const StepsContext = createContext<StepsContextProps>({
 });
 
 const StepsModals = (props: StepsModalsProps) => {
-    const { steps, activeStep, setActiveStep, isModalVisible, onFinish, canAdvance = true } = props;
+    const {
+        steps,
+        activeStep,
+        setActiveStep,
+        isModalVisible,
+        onFinish,
+        onClose,
+        canAdvance = true,
+    } = props;
 
     const wrapperClassNames = classNames(
         styles.wrapper,
@@ -59,7 +69,10 @@ const StepsModals = (props: StepsModalsProps) => {
     const handlePrevStep = () => {
         if (0 < activeStep) {
             setActiveStep(activeStep - 1);
+            return;
         }
+
+        onClose?.();
     };
 
     return (
@@ -70,43 +83,38 @@ const StepsModals = (props: StepsModalsProps) => {
                 handlePrevStep,
             }}
         >
-            <div className={wrapperClassNames}>
+            <div
+                className={wrapperClassNames}
+            >
                 {isModalVisible && (
                     steps.map(({ title, content, showNext = true, showPrevious = true }, index) => (
-                        <div
+                        <Modal
                             key={index}
-                            className={classNames(
-                                styles.step,
-                                {
-                                    [styles.active]: index === activeStep,
-                                },
+                            open={activeStep === index}
+                            title={title}
+                            content={content}
+                            onClose={onClose}
+                            buttons={(
+                                <>
+                                    {showPrevious && (
+                                        <Button
+                                            onClick={handlePrevStep}
+                                            disabled={0 === activeStep && !onClose}
+                                        >
+                                            {0 === activeStep && !!onClose ? 'Fechar' : 'Anterior'}
+                                        </Button>
+                                    )}
+                                    {showNext && (
+                                        <Button
+                                            onClick={handleNextStep}
+                                            disabled={!canAdvance}
+                                        >
+                                            {activeStep === steps.length - 1 ? 'Finalizar' : 'Próximo'}
+                                        </Button>
+                                    )}
+                                </>
                             )}
-                        >
-                            <h2 className={styles.title}>
-                                {title}
-                            </h2>
-                            <div className={styles.content}>
-                                {content}
-                            </div>
-                            <div className={styles['button-container']}>
-                                {showPrevious && (
-                                    <Button
-                                        onClick={handlePrevStep}
-                                        disabled={0 === activeStep}
-                                    >
-                                        {'Voltar'}
-                                    </Button>
-                                )}
-                                {showNext && (
-                                    <Button
-                                        onClick={handleNextStep}
-                                        disabled={!canAdvance}
-                                    >
-                                        {activeStep === steps.length - 1 ? 'Finalizar' : 'Próximo'}
-                                    </Button>
-                                )}
-                            </div>
-                        </div>
+                        />
                     ))
                 )}
             </div>

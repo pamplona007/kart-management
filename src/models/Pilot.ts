@@ -7,7 +7,7 @@ export interface IPilot extends mongoose.Document {
     age: number;
     rating: number;
     confirmed: boolean;
-    possibleDates: Date[];
+    paidAmount: number;
 }
 
 const PilotSchema = new mongoose.Schema<IPilot>({
@@ -35,6 +35,10 @@ const PilotSchema = new mongoose.Schema<IPilot>({
         type: Boolean,
         required: [true, 'Please provide a confirmation status for the pilot.'],
         default: false,
+    },
+    paidAmount: {
+        type: Number,
+        default: 0,
     },
 }, {
     timestamps: true,

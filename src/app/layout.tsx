@@ -19,7 +19,9 @@ const RootLayout = ({ children }: PropsWithChildren) => {
                 <QueryClientProvider client={queryClient}>
                     <main className={styles.main}>
                         <div className={styles.overlay}></div>
-                        {children}
+                        <div className={styles.container}>
+                            {children}
+                        </div>
                     </main>
                 </QueryClientProvider>
             </body>

@@ -6,6 +6,7 @@ export async function GET() {
 
     const pilots = await Pilot.find({
         rating: { $gte: 1 },
+        confirmed: true,
     });
 
     return Response.json(pilots);

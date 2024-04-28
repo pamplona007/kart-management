@@ -1,0 +1,112 @@
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s, background-color 0.5s;
+        z-index: 1000;
+        background-color: transparent;
+
+        backdrop-filter: blur(2px);
+    }
+
+    .modal {
+        pointer-events: none;
+        opacity: 0;
+        scale: 0.5;
+    }
+
+    &.open {
+
+        .overlay {
+            pointer-events: auto;
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .modal {
+            opacity: 1;
+            scale: 1;
+            pointer-events: auto;
+            animation: jumpIn 0.5s;
+        }
+    }
+}
+
+.modal {
+    display: flex;
+    position: relative;
+    background-color: rgba($color: #000, $alpha: 0.8);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    min-height: 50svh;
+    padding: 30px;
+    text-align: center;
+    border-radius: 7px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 1001;
+    width: calc(100% - 30px);
+
+    animation: jumpOut 0.5s;
+
+    > .content {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+
+    > .button-container {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 10px;
+        width: 50%;
+    }
+}
+
+@keyframes jumpIn {
+    0% {
+        opacity: 0;
+        scale: 0.5;
+    }
+    50% {
+        scale: 1.1;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes jumpOut {
+    0% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.1;
+    }
+    100% {
+        opacity: 0;
+        scale: 0.5;
+    }
+}

@@ -75,9 +75,7 @@ const Pilots = () => {
                                     {' '}
                                     {'"'}
                                     {pilot.nickName}
-                                    {'" '}
-                                    {' '}
-                                    {pilot.lastName}
+                                    {'"'}
                                 </td>
                                 <td>
                                     {pilot.rating * 50}
