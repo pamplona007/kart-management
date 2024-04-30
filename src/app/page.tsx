@@ -12,6 +12,8 @@ import Link from 'next/link';
 
 import styles from './page.module.scss';
 
+export const dynamic = 'force-dynamic';
+
 const Home = () => {
     const [isImportantInformationOpen, setIsImportantInformationOpen] = useState(false);
     const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
@@ -68,7 +70,5 @@ const Home = () => {
         </>
     );
 };
-
-export const revalidate = 60;
 
 export default Home;
