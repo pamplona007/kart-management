@@ -13,6 +13,7 @@ import Link from 'next/link';
 import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 60;
 
 const Home = () => {
     const [isImportantInformationOpen, setIsImportantInformationOpen] = useState(false);
