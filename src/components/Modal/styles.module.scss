@@ -42,7 +42,6 @@
             opacity: 1;
             scale: 1;
             pointer-events: auto;
-            animation: jumpIn 0.5s;
         }
     }
 }
@@ -64,8 +63,6 @@
     gap: 20px;
     z-index: 1001;
     width: calc(100% - 30px);
-
-    animation: jumpOut 0.5s;
 
     > .content {
         display: flex;

@@ -6,7 +6,8 @@ import RegistrationContext, { FormValues } from '@/contexts/RegistrationContext'
 import { useFormik } from 'formik';
 
 import { importantInformationSteps } from '../ImportantInformationSteps';
-import Pix from '../Pix';
+import Pix10 from '../Pix10';
+import Pix110 from '../Pix110';
 import StepsModals, { Step } from '../StepsModals';
 import AgeStep from './components/AgeStep';
 import FormStep from './components/FormStep';
@@ -59,7 +60,30 @@ const RegistrationSteps = (props: RegistrationProps) => {
         ];
 
         if (0 === formik.values.rating) {
-            return baseSteps;
+            return [
+                ...baseSteps,
+                {
+                    title: 'Não vai correr?',
+                    content: (
+                        <div>
+                            <p>
+                                {'Que pena que não vai correr com a gente! Mas se mudar de opinião, basta avisar que botamos seu nome junto com o restante dos pilotos!'}
+                            </p>
+                        </div>
+                    ),
+                },
+                {
+                    title: 'Valores',
+                    content: (
+                        <div>
+                            <p>
+                                {'A festa não acaba para quem não vai correr. Ainda vamos ter comida, bebida e muita diversão! Estamos pedindo 10 reais como uma cota simbólica para comprar tudo isso. Se puder, envie o valor para garantir sua cota!'}
+                            </p>
+                            <Pix10 />
+                        </div>
+                    ),
+                },
+            ];
         }
 
         return [
@@ -68,15 +92,45 @@ const RegistrationSteps = (props: RegistrationProps) => {
                 title: 'Sua idade',
                 content: <AgeStep />,
             },
+            {
+                title: 'Valores',
+                content: (
+                    <div>
+                        <small>
+                            {'O valor cobrado pelo kart é de 100 reais e estamos pedindo mais 10 reais para ajudar a comprar comidas, bebidas e talvez até o equipamento de segurança que seria alugado. Mas fique a vontade para enviar só uma parte e enviar o restante depois, sua vaga estará garantida!'}
+                        </small>
+                    </div>
+                ),
+            },
+            {
+                title: 'Valores',
+                content: (
+                    <div>
+                        <small>
+                            {'Seu nome só vai aparecer na lista de corredores após feita a transferência, mesmo que parcial, do valor da inscrição. Se você não puder pagar agora, não tem problema, só avise que a gente dá um jeito!'}
+                        </small>
+                    </div>
+                ),
+            },
+            {
+                title: 'Valores',
+                content: (
+                    <div>
+                        <small>
+                            {'Caso precise cancelar, pedimos que avise pelo menos uma semana antes do evento para que possamos devolver o valor da inscrição.'}
+                        </small>
+                    </div>
+                ),
+            },
             ...importantInformationSteps,
             {
                 title: 'Para finalizar',
                 content: (
                     <div>
                         <p>
-                            {'Você já está registrado(a)! Mas ainda precisa confirmar a participação ao realizar o pagamento da inscrição.'}
+                            {'Você já está registrado(a)! Mas ainda precisa realizar o pagamento da inscrição. Novamente, fique a vontade para enviar só uma parte e enviar o restante depois, vamos garantir sua vaga!'}
                         </p>
-                        <Pix />
+                        <Pix110 />
                     </div>
                 ),
             },
@@ -88,7 +142,7 @@ const RegistrationSteps = (props: RegistrationProps) => {
             return Boolean(formik.values.firstName && formik.values.lastName && formik.values.nickName);
         }
 
-        if (2 === activeStep) {
+        if (2 === activeStep && 0 !== formik.values.rating) {
             return Boolean(formik.values.birthday);
         }
 

@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import Button from '@/components/Button';
 import ImportantInformationSteps from '@/components/ImportantInformationSteps';
 import Modal from '@/components/Modal';
-import Pix from '@/components/Pix';
+import Pix110 from '@/components/Pix110';
 import RegistrationSteps from '@/components/RegistrationSteps';
 import classNames from 'classnames';
 import Image from 'next/image';
@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 import styles from './page.module.scss';
 
-const racerImageQuantity = 7;
+const racerImageQuantity = 8;
 
 const Home = () => {
     const [loaded, setLoaded] = useState(false);
@@ -45,7 +45,8 @@ const Home = () => {
                         <Image
                             src={`/images/racers/racer-${randomRacerImage}.png`}
                             alt={'Racer'}
-                            layout={'fill'}
+                            width={450}
+                            height={450}
                             quality={100}
                             className={imageClassNames}
                             onLoad={() => setLoaded(true)}
@@ -91,7 +92,7 @@ const Home = () => {
             <Modal
                 title={'Pix para registro'}
                 open={isPixModalOpen}
-                content={<Pix />}
+                content={<Pix110 />}
                 onClose={() => setIsPixModalOpen(false)}
             />
         </>
