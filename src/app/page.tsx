@@ -43,7 +43,7 @@ const Home = () => {
                         className={imageContainerClassNames}
                     >
                         <Image
-                            src={`/images/racers/racer-${randomRacerImage}.png`}
+                            src={`/images/racers/racer-${randomRacerImage}.webp`}
                             alt={'Racer'}
                             width={450}
                             height={450}
