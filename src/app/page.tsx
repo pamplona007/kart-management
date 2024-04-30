@@ -55,7 +55,7 @@ const Home = () => {
                         {'Niver Pamplona'}
                     </h1>
                     <h2 className={styles.subtitle}>
-                        {'Sábado dia 15 de julho'}
+                        {'Sábado dia 15 de junho'}
                     </h2>
                 </div>
 
