@@ -13,12 +13,14 @@ import Link from 'next/link';
 import styles from './page.module.scss';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 60;
 
-const Home = () => {
+const Home = ({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) => {
     const [isImportantInformationOpen, setIsImportantInformationOpen] = useState(false);
     const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
     const [isPixModalOpen, setIsPixModalOpen] = useState(false);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { admin } = searchParams;
 
     return (
         <>
