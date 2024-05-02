@@ -7,12 +7,15 @@
     background-image: url('/images/bg-4.webp');
     background-size: auto;
     background-position: center;
-    background-repeat: repeat-y;
+    background-repeat: repeat;
+
+    animation: moveBackground 40s linear infinite;
   }
 
   .overlay {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
     width: 100%;
     height: 100%;
     z-index: 0;
@@ -27,10 +30,7 @@
     0% {
       background-position: 0 0;
     }
-    50% {
-      background-position: 100% 0;
-    }
     100% {
-      background-position: 0 0;
+      background-position: 1280px 0;
     }
   }
