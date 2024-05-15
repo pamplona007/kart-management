@@ -38,8 +38,8 @@ const Pilots = () => {
         const minorsPilotsPerRace = Math.ceil(minors.length / minorsRacesQuantity);
         const majorsPilotsPerRace = Math.ceil(majors.length / majorsRacesQuantity);
 
-        const minorsOrganizedByRating = minors.sort((a, b) => a.rating - b.rating);
-        const majorsOrganizedByRating = majors.sort((a, b) => a.rating - b.rating);
+        const minorsOrganizedByRating = minors.sort((a, b) => b.rating - a.rating);
+        const majorsOrganizedByRating = majors.sort((a, b) => b.rating - a.rating);
 
         const minorsRaces = Array.from({ length: minorsRacesQuantity }, (_, index) => {
             const start = index * minorsPilotsPerRace;

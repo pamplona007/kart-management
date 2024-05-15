@@ -4,10 +4,13 @@ import Pilot, { IPilot } from '@/models/Pilot';
 export async function GET() {
     await dbConnect();
 
-    const pilots = await Pilot.find({
-        rating: { $gte: 1 },
-        confirmed: true,
-    });
+    const pilots = await Pilot.find(
+        {
+            rating: { $gte: 1 },
+            confirmed: true,
+        },
+        'firstName lastName nickName age rating',
+    );
 
     return Response.json(pilots);
 }
