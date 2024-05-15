@@ -1,5 +1,5 @@
 import dbConnect from '@/lib/dbConnect';
-import Pilot from '@/models/Pilot';
+import Pilot, { IPilot } from '@/models/Pilot';
 
 export async function GET() {
     await dbConnect();
@@ -15,10 +15,18 @@ export async function GET() {
 export async function POST(request: Request) {
     await dbConnect();
 
-    const body = await request.json();
+    const body: IPilot = await request.json();
 
     try {
-        const newPilot = await Pilot.create(body);
+        const newPilot = await Pilot.create({
+            firstName: body.firstName.trim(),
+            lastName: body.lastName.trim(),
+            nickName: body.nickName.trim(),
+            age: body.age,
+            rating: body.rating,
+            confirmed: false,
+            paidAmount: 0,
+        });
 
         return Response.json(newPilot);
     } catch (error) {
