@@ -8,3 +8,5 @@ export async function GET() {
 
     return Response.json(pilots);
 }
+
+export const revalidate = 600;
