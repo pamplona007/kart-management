@@ -33,7 +33,7 @@ const Home = ({ searchParams }: { searchParams: { [key: string]: string | string
                     <h2 className={styles.subtitle}>
                         {'Sábado dia 15 de junho'}
                         <br />
-                        <a href={'https://maps.app.goo.gl/5XLW3j9bCb1CUkHR6'} target={'_blank'}>
+                        <a href={'https://maps.app.goo.gl/5XLW3j9bCb1CUkHR6'} target={'_blank'} rel="noreferrer">
                             {'No Kart Mônaco'}
                         </a>
                         <br />
@@ -65,6 +65,7 @@ const Home = ({ searchParams }: { searchParams: { [key: string]: string | string
                         href={'https://maps.app.goo.gl/5XLW3j9bCb1CUkHR6'}
                         target={'_blank'}
                         className={styles['button-pix']}
+                        rel="noreferrer"
                     >
                         {'Localização'}
                     </a>
