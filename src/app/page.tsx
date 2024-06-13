@@ -37,7 +37,7 @@ const Home = ({ searchParams }: { searchParams: { [key: string]: string | string
                             {'No Kart Mônaco'}
                         </a>
                         <br />
-                        {'Corridas começando as 17h'}
+                        {'Corridas começando as 17h (não pode atrasar)'}
                     </h2>
                 </div>
 
