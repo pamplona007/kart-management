@@ -8,7 +8,6 @@ import { useQuery } from '@tanstack/react-query';
 import styles from './styles.module.scss';
 
 const MAX_PILOTS_PER_RACE = 10;
-const MAX_PILOTS_PER_RACE_MINOR = 6;
 
 type IRace = IPilot[];
 
@@ -26,7 +25,7 @@ const Pilots = () => {
             return [];
         }
 
-        const racingPilots = pilots.filter((pilot) => pilot.confirmed && pilot.rating > 0);
+        const racingPilots = pilots.filter((pilot) => pilot.confirmed && 0 < pilot.rating);
 
         const majorsRacesQuantity = Math.ceil(racingPilots.length / MAX_PILOTS_PER_RACE);
 
@@ -41,8 +40,8 @@ const Pilots = () => {
         });
     }, [pilots]);
 
-    const unconfimedPilots = (pilots || []).filter((pilot) => !pilot.confirmed && pilot.rating > 0);
-    const notRacingPilots = (pilots || []).filter((pilot) => pilot.rating === 0);
+    const unconfimedPilots = (pilots || []).filter((pilot) => !pilot.confirmed && 0 < pilot.rating);
+    const notRacingPilots = (pilots || []).filter((pilot) => 0 === pilot.rating);
 
     return (
         <div className={styles.pilots}>
